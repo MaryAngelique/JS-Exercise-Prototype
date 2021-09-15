@@ -92,8 +92,8 @@ Car.prototype.fill = function(gallons) {
 
 Car.prototype.drive = function(distance) {
   this.odometer += distance;
-  let lessFuel = distance / this.milesPerGallon;
-  this.tank -= lessFuel;
+  let ranOutOfFuel = distance / this.milesPerGallon;
+  this.tank -= ranOutOfFuel;
 };
 
 
@@ -104,18 +104,26 @@ Car.prototype.drive = function(distance) {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
+function Baby(name, age, favoriteToy) {
+  this.name = name;
+  this.age = age;
+  this.favoriteToy = favoriteToy;
 }
+
+Baby.prototype = Object.create(Person.prototype);
+
+Baby.prototype.play = function() {
+  return `Playing with ${this.favoriteToy}`;
+};
 
 
 /* 
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. "this" can be a function that's called.
+  2. Refers to an instance of an object when constructors are being used.
+  3. Window objects can be put inside a function.
+  4. Can be used to apply methods.
 */
 
 
